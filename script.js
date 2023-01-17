@@ -7,23 +7,25 @@ function insert(num){
     var numerator = 0;
     var denominator = 0;
     var exp = calculation.textContent;
-    for (let index = 0; index < operator.length; index++) {
-        if(calculation.textContent.includes(operator[index])){
-            denominator = exp.substring(exp.indexOf(operator[index])+1,exp.length)
-            if(operator.includes(num)){
-                return;
-            }
-            else if(denominator.includes(".") && num=="."){
-                return;
+    if(!finish){
+        for (let index = 0; index < operator.length; index++) {
+            if(calculation.textContent.includes(operator[index])){
+                denominator = exp.substring(exp.indexOf(operator[index])+1,exp.length)
+                if(operator.includes(num)){
+                    return;
+                }
+                else if(denominator.includes(".") && num=="."){
+                    return;
+                }
             }
         }
-    }
-    if(denominator==0){
-        numerator = calculation.textContent;
-        if(numerator.includes(".") && num=="."){
-            return;
-        }else if (calculation.textContent=="" && num=="."){
-            calculation.textContent+= "0";
+        if(denominator==0){
+            numerator = calculation.textContent;
+            if(numerator.includes(".") && num=="."){
+                return;
+            }else if (calculation.textContent=="" && num=="."){
+                calculation.textContent+= "0";
+            }
         }
     }
     if (finish){
@@ -53,6 +55,10 @@ document.getElementById("back").addEventListener("click",function(){
 
 document.getElementById("equal").addEventListener("click",function(){
     var exp = calculation.textContent;
-    result.textContent = eval(exp);
+    var risultato = eval(exp);
+    if(risultato.toString().length>8){
+        risultato = risultato.toString().substring(0,8);
+    }
+    result.textContent = risultato ;
     finish = true;
 })
