@@ -8,13 +8,6 @@ body {
   font-family: "Red Hat Display", sans-serif;
 }
 
-/* center calculator */
-.calculator {
-  width:400px;
-  text-align:center;
-  border:dotted 1px black;
-}
-
 /* CSS for screen and screenContent , calculation , result */
 .screen {
   height: 150px;
@@ -88,4 +81,8 @@ input[type="button"]:hover {
   background-color: #ffa800;
   color: #fff;
   transition: all 0.5s linear;
+}
+
+#spazio{
+  height: 100px;
 }
